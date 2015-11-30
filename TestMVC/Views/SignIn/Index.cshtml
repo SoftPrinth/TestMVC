@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<div class="content">
+    <div class="main">
+        <h1>Sign In</h1>
+        <form action="~/SignIn/Login" method="post">
+            <table>
+                <tr>
+                    <td>User Name : </td>
+                    <td><input type="text" name="userTxt"></td>
+                </tr>
+                <tr>
+                    <td>Password : </td>
+                    <td><input type="password" name="pwdTxt"></td>
+                </tr>
+                <tr>
+                    <td>Type : </td>
+                    <td>
+                        <select name="userType">
+                            <option value="1">Administrator</option>
+                            <option value="2">Member</option>
+                        </select>
+                    </td>
+                </tr>
+            </table><br>
+            <input type="submit" value="Sign In" class="btn" onclick="cryto()">
+        </form>
+    </div>
+</div>
+
+<script>
+    function cryto() {
+        var hash = CryptoJS.SHA256(document.getElementsByName("pwdTxt")[0].value);
+        document.getElementsByName("pwdTxt")[0].value = hash;
+    }
+</script>
